@@ -8,28 +8,28 @@
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Outfit', sans-serif;
 
-  /* EU Blue Palette */
-  --background: 210 20% 98%;
+  /* DTT4SD Palette - Derived from Logo */
+  --background: 0 0% 100%;
   --foreground: 222 47% 11%;
   
-  --primary: 220 100% 30%; /* EU Blue #003399 */
+  --primary: 215 80% 33%; /* Dark Blue from DTT */
   --primary-foreground: 210 40% 98%;
   
-  --secondary: 48 100% 50%; /* EU Yellow #FFCC00 */
+  --secondary: 95 60% 45%; /* Green from Leaf */
   --secondary-foreground: 222 47% 11%;
   
+  --accent: 195 90% 45%; /* Bright Blue from Graduation Cap */
+  --accent-foreground: 210 40% 98%;
+
   --muted: 210 40% 96%;
   --muted-foreground: 215 16% 47%;
-  
-  --accent: 210 40% 96%;
-  --accent-foreground: 222 47% 11%;
   
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
   --border: 214 32% 91%;
   --input: 214 32% 91%;
-  --ring: 220 100% 30%;
+  --ring: 215 80% 33%;
   
   --radius: 0.5rem;
 }

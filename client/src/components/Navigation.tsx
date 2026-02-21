@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import projectLogo from "@assets/logo_1771678672101.png";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -21,10 +22,13 @@ export function Navigation() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold text-primary">
-            {/* Erasmus Logo Placeholder */}
-            <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-secondary font-bold">E+</div>
-            <span>ErasmusProject</span>
+          <Link href="/" className="flex items-center gap-4 font-display text-xl font-bold text-primary">
+            <img src={projectLogo} alt="DTT4SD Logo" className="h-10 w-auto object-contain" />
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg" 
+              alt="European Union Flag" 
+              className="h-8 w-auto object-contain hidden sm:block border border-muted"
+            />
           </Link>
 
           {/* Desktop Nav */}
