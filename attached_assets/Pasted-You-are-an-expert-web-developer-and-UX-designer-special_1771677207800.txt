@@ -1,0 +1,128 @@
+You are an expert web developer and UX designer specialized in Erasmus+ and EU-funded project websites.
+
+Create a responsive, accessible, multilingual-ready project website web app that fully complies with EACEA and European Commission communication and visibility guidelines.
+
+General Requirements
+
+Clean, professional, EU-project visual identity
+
+Fully responsive (desktop, tablet, mobile)
+
+GDPR-compliant (newsletter subscription, contact form)
+
+SEO-friendly structure
+
+Easy content management (CMS-like structure or editable components)
+
+Accessibility compliant (WCAG 2.1 AA)
+
+Scalable for future Erasmus+ dissemination needs
+
+Mandatory Website Structure & Content
+1. Homepage
+
+Project logo (prominently displayed)
+
+European Commission logo
+
+Clear project title
+
+Mandatory phrase displayed visibly:
+“Co-funded by the European Union”
+
+Short project summary
+
+Latest news highlights
+
+Call-to-action buttons (About the Project, Results, Subscribe)
+
+2. About the Project
+
+Project overview
+
+Objectives and main goals
+
+Work packages
+
+Timeline and milestones (visual timeline)
+
+Project duration
+
+Budget overview (high-level, infographic style)
+
+Project coordinator information
+
+Content based on the official Erasmus+ application document
+
+3. Partners
+
+Grid layout of partner logos
+
+Partner name, role, short description
+
+Clickable links to partner websites
+
+4. Results
+
+Deliverables (downloadable PDFs)
+
+Newsletters
+
+Promotional materials
+
+Filters by type and date
+
+5. News & Events
+
+News articles and event posts
+
+Event details (date, location, description)
+
+Archive and category filters
+
+6. Social Media
+
+Visible links/icons to all official project social media channels
+
+Embedded feeds where appropriate
+
+7. Contact & Newsletter
+
+Contact form (email routing configurable)
+
+Newsletter subscription form
+
+GDPR consent checkbox with privacy notice
+
+Design & UX Guidelines
+
+Modern EU-project style (blue/yellow accents allowed but not mandatory)
+
+Clear navigation with header and footer
+
+Footer must include:
+
+EU funding acknowledgment
+
+Disclaimer text (standard Erasmus+ wording)
+
+Privacy Policy and Cookie Policy links
+
+Technical Preferences (adapt if needed)
+
+Framework: React / Next.js (or equivalent modern framework)
+
+Styling: Tailwind CSS or CSS Modules
+
+SEO metadata per page
+
+Image optimization
+
+CMS or JSON-based content structure for easy updates
+
+Inspiration
+
+Use https://mlumse.eu/
+ and other positively assessed Erasmus+ project websites as UX and structure references, while producing an original, compliant design.
+
+Deliver a production-ready web app, with clear file structure, reusable components, and placeholder content ready to be replaced with final project data.
