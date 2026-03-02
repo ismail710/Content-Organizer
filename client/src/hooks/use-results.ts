@@ -1,17 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { api } from "@shared/routes";
+import { resultItems } from "@/lib/staticData";
 
 export function useResults(type?: 'deliverable' | 'newsletter' | 'promotional') {
   return useQuery({
-    queryKey: [api.results.list.path, type],
+    queryKey: ["results", type],
     queryFn: async () => {
-      const url = type 
-        ? `${api.results.list.path}?type=${type}`
-        : api.results.list.path;
-        
-      const res = await fetch(url);
-      if (!res.ok) throw new Error("Failed to fetch results");
-      return api.results.list.responses[200].parse(await res.json());
+      const items = type ? resultItems.filter((r) => r.type === type) : resultItems;
+      return [...items].sort(
+        (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
     },
   });
 }

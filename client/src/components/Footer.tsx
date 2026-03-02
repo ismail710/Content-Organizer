@@ -4,84 +4,82 @@ import { Facebook, Twitter, Linkedin, Instagram, Mail } from "lucide-react";
 export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 py-4 md:py-7">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           
           {/* Column 1: EU Funding */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              {/* EU Flag - Static Import Simulation */}
+          <div className="col-span-2 md:col-span-1 flex flex-row md:flex-col items-center md:items-start gap-3 md:space-y-4">
+            <div className="flex items-center gap-2">
                <img 
                  src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg" 
                  alt="EU Flag" 
-                 className="h-12 w-auto"
+                 className="h-8 md:h-12 w-auto flex-shrink-0"
                />
-               <span className="text-sm font-semibold max-w-[150px] leading-tight">
+               <span className="text-xs md:text-sm font-semibold leading-tight">
                  Co-funded by the European Union
                </span>
             </div>
-            <p className="text-sm opacity-90 leading-relaxed">
-              Project Number: 2024-1-XX01-KA220-HED-000000000
+            <p className="text-xs md:text-sm opacity-90 whitespace-nowrap">
+              Project No: 101237713
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-4 font-display text-secondary">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link href="/about" className="hover:text-secondary transition-colors">About the Project</Link></li>
-              <li><Link href="/results" className="hover:text-secondary transition-colors">Project Results</Link></li>
-              <li><Link href="/partners" className="hover:text-secondary transition-colors">Consortium</Link></li>
-              <li><Link href="/news" className="hover:text-secondary transition-colors">News & Events</Link></li>
+            <h3 className="text-sm md:text-lg font-bold mb-2 md:mb-4 font-display text-secondary">Quick Links</h3>
+            <ul className="space-y-1 md:space-y-2 text-xs md:text-base">
+              <li><Link href="/about" className="hover:text-secondary transition-colors">About</Link></li>
+              <li><Link href="/results" className="hover:text-secondary transition-colors">Results</Link></li>
+              <li><Link href="/partners" className="hover:text-secondary transition-colors">Partners</Link></li>
+              <li><Link href="/news" className="hover:text-secondary transition-colors">News</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Contact */}
           <div>
-            <h3 className="text-lg font-bold mb-4 font-display text-secondary">Contact Us</h3>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <a href="mailto:info@erasmusproject.eu" className="hover:text-secondary">info@erasmusproject.eu</a>
+            <h3 className="text-sm md:text-lg font-bold mb-2 md:mb-4 font-display text-secondary">Contact</h3>
+            <ul className="space-y-1 md:space-y-3 text-xs md:text-sm">
+              <li>
+                <p className="font-semibold text-secondary/90">Željko Bačić</p>
+                <p className="opacity-75 hidden md:block">Project Coordinator</p>
+                <p className="opacity-75 hidden md:block">University of Zagreb</p>
               </li>
-              <li className="opacity-90">University of Example</li>
-              <li className="opacity-90">123 Education Lane</li>
-              <li className="opacity-90">1000 Brussels, Belgium</li>
+              <li className="flex items-center gap-1">
+                <Mail className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                <a href="mailto:zbacic@geof.hr" className="hover:text-secondary truncate">zbacic@geof.hr</a>
+              </li>
+              <li className="flex items-center gap-1">
+                <Mail className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                <a href="mailto:mlumse@geof.hr" className="hover:text-secondary truncate">mlumse@geof.hr</a>
+              </li>
             </ul>
           </div>
 
           {/* Column 4: Social */}
           <div>
-            <h3 className="text-lg font-bold mb-4 font-display text-secondary">Follow Us</h3>
-            <div className="flex gap-4">
-              <a href="#" className="p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
-                <Facebook className="h-5 w-5" />
+            <h3 className="text-sm md:text-lg font-bold mb-2 md:mb-4 font-display text-secondary">Follow Us</h3>
+            <div className="flex flex-wrap gap-2 md:gap-4">
+              <a href="#" className="p-1.5 md:p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
+                <Facebook className="h-4 w-4 md:h-5 md:w-5" />
               </a>
-              <a href="#" className="p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
-                <Twitter className="h-5 w-5" />
+              <a href="#" className="p-1.5 md:p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
+                <Twitter className="h-4 w-4 md:h-5 md:w-5" />
               </a>
-              <a href="#" className="p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
-                <Linkedin className="h-5 w-5" />
+              <a href="https://www.linkedin.com/company/ddt4sd/" target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
+                <Linkedin className="h-4 w-4 md:h-5 md:w-5" />
               </a>
-              <a href="#" className="p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
-                <Instagram className="h-5 w-5" />
+              <a href="#" className="p-1.5 md:p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
+                <Instagram className="h-4 w-4 md:h-5 md:w-5" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-primary-foreground/20 text-xs text-center md:text-left text-primary-foreground/70">
-          <div className="grid md:grid-cols-2 gap-4">
-            <p>
-              Funded by the European Union. Views and opinions expressed are however those of the author(s) only 
-              and do not necessarily reflect those of the European Union or the European Education and Culture 
-              Executive Agency (EACEA). Neither the European Union nor EACEA can be held responsible for them.
-            </p>
-            <div className="flex justify-center md:justify-end gap-6">
-              <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
-              <Link href="/cookies" className="hover:text-white">Cookie Policy</Link>
-              <span>© {new Date().getFullYear()} ErasmusProject</span>
-            </div>
+        <div className="mt-3 md:mt-5 pt-3 md:pt-4 border-t border-primary-foreground/20 text-xs text-center md:text-left text-primary-foreground/70">
+          <div className="flex flex-wrap justify-center md:justify-end gap-3 md:gap-6">
+            <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
+            <Link href="/cookies" className="hover:text-white">Cookie Policy</Link>
+            <span>© {new Date().getFullYear()} ErasmusProject</span>
           </div>
         </div>
       </div>

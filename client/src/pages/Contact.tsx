@@ -50,11 +50,12 @@ export default function Contact() {
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-white/10 rounded-lg">
-                      <Mail className="w-5 h-5 text-secondary" />
+                      <MapPin className="w-5 h-5 text-secondary" />
                     </div>
                     <div>
-                      <p className="font-bold text-sm">Email Us</p>
-                      <a href="mailto:info@erasmusproject.eu" className="text-sm opacity-90 hover:text-white">info@erasmusproject.eu</a>
+                      <p className="font-bold text-sm">Project Coordinator</p>
+                      <p className="text-sm opacity-90 font-semibold">Željko Bačić</p>
+                      <p className="text-sm opacity-75">University of Zagreb</p>
                     </div>
                   </div>
 
@@ -63,22 +64,18 @@ export default function Contact() {
                       <Phone className="w-5 h-5 text-secondary" />
                     </div>
                     <div>
-                      <p className="font-bold text-sm">Call Us</p>
-                      <p className="text-sm opacity-90">+32 2 000 00 00</p>
+                      <p className="font-bold text-sm">Phone</p>
+                      <p className="text-sm opacity-90"></p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-white/10 rounded-lg">
-                      <MapPin className="w-5 h-5 text-secondary" />
+                      <Mail className="w-5 h-5 text-secondary" />
                     </div>
                     <div>
-                      <p className="font-bold text-sm">Coordinator Office</p>
-                      <p className="text-sm opacity-90">
-                        University of Example<br />
-                        123 Education Lane<br />
-                        1000 Brussels, Belgium
-                      </p>
+                      <p className="font-bold text-sm">Email</p>
+                      <a href="mailto:mlumse@geof.hr" className="text-sm opacity-90 hover:text-white block"></a>
                     </div>
                   </div>
                 </div>

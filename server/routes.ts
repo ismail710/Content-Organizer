@@ -73,25 +73,67 @@ async function seedDatabase() {
   if (existingPartners.length === 0) {
     console.log("Seeding partners...");
     await storage.createPartner({
-      name: "Coordinator University",
-      role: "Coordinator",
-      description: "Leading institution in European educational research with decades of experience.",
-      websiteUrl: "https://example.com/coordinator",
-      logoUrl: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=200&h=200",
+      name: "Institut Agronomique et Vétérinaire Hassan II",
+      role: "Partner",
+      description: "Leading agricultural and veterinary institution in Morocco.",
+      websiteUrl: "https://iav.ac.ma/",
+      logoUrl: "/logo/logo_IAV.png",
     });
     await storage.createPartner({
-      name: "InnovateTech NGO",
+      name: "Institut National Agronomique de Tunisie",
       role: "Partner",
-      description: "Technical partner developing the digital platforms and tools.",
-      websiteUrl: "https://example.com/partner1",
-      logoUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=200&h=200",
+      description: "National agricultural institute of Tunisia.",
+      websiteUrl: "http://www.inat.tn/fr",
+      logoUrl: "/logo/inat.png",
     });
     await storage.createPartner({
-      name: "European Policy Institute",
+      name: "University of Zagreb",
       role: "Partner",
-      description: "Policy advisory and evaluation of project outcomes.",
-      websiteUrl: "https://example.com/partner2",
-      logoUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=200&h=200",
+      description: "Major public research university in Croatia.",
+      websiteUrl: "https://www.unizg.hr/homepage/",
+      logoUrl: "/logo/UniZg.png",
+    });
+    await storage.createPartner({
+      name: "University Ibn Tofail",
+      role: "Partner",
+      description: "Public university in Kenitra, Morocco.",
+      websiteUrl: "https://www.uit.ac.ma/",
+      logoUrl: "/logo/ibn-tofail.png",
+    });
+    await storage.createPartner({
+      name: "ITC - Faculty of Geo Information Science and Earth Observation / University of Twente",
+      role: "Partner",
+      description: "Leading institution in geoinformation science and earth observation.",
+      websiteUrl: "https://www.itc.nl/",
+      logoUrl: "/logo/ITC.png",
+    });
+    await storage.createPartner({
+      name: "Oikon Ltd. – Institute of Applied Ecology",
+      role: "Partner",
+      description: "Applied ecology institute based in Croatia.",
+      websiteUrl: "https://oikon.hr/",
+      logoUrl: "/logo/OIKON.png",
+    });
+    await storage.createPartner({
+      name: "University of Jendouba",
+      role: "Partner",
+      description: "Public university in Tunisia.",
+      websiteUrl: "https://uj.rnu.tn/fr",
+      logoUrl: "/logo/Jendouba.png",
+    });
+    await storage.createPartner({
+      name: "CRTEAN – Regional Center for Remote Sensing of North Africa States",
+      role: "Partner",
+      description: "Regional center specializing in remote sensing technology for North Africa.",
+      websiteUrl: "https://crtean.org.tn/",
+      logoUrl: "/logo/CRTEAN.png",
+    });
+    await storage.createPartner({
+      name: "Fayoum University",
+      role: "Partner",
+      description: "Public university in Egypt offering comprehensive educational programs.",
+      websiteUrl: "https://www.fayoum.edu.eg/en",
+      logoUrl: "/logo/Fayoum.png",
     });
   }
 
@@ -99,20 +141,24 @@ async function seedDatabase() {
   if (existingNews.length === 0) {
     console.log("Seeding news & events...");
     await storage.createNewsItem({
-      title: "Project Kickoff Meeting in Brussels",
-      content: "The consortium gathered in Brussels to launch the new Erasmus+ initiative. We discussed the work packages, upcoming milestones, and overall coordination strategy for the next three years.",
-      type: "event",
-      eventDate: new Date("2026-03-15T09:00:00Z"),
-      location: "Brussels, Belgium",
-      imageUrl: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600&h=400",
+      title: "Kick-off meeting",
+      content: "Tunisia - UCAR\n\n11-13 February 2026\n\nThe official launch of the DTT4SD project represents a strategic milestone, marking the operational beginning of this international initiative dedicated to integrating Digital Twin Tools into higher education and sectors related to sustainable development.\n\nThis inaugural phase aims to clearly and systematically present the overall vision of the project, which is grounded in digital innovation, pedagogical transformation, and capacity building to address contemporary environmental challenges.",
+      type: "news",
+      eventDate: new Date("2026-02-11T09:00:00Z"),
+      location: "Tunisia - UCAR",
+      imageUrl: "/groupe.jpeg",
     });
     
     await storage.createNewsItem({
-      title: "First Phase of Research Complete",
-      content: "We are thrilled to announce that WP1 research has concluded ahead of schedule. The preliminary data suggests strong alignment with our initial hypotheses regarding educational frameworks.",
-      type: "news",
-      imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600&h=400",
+      title: "CURRICULA DEVELOPMENT AND 1st TRAINING",
+      content: "Enschede (UT)\n\nSummer 2026",
+      type: "event",
+      eventDate: new Date("2026-06-01T09:00:00Z"),
+      location: "Enschede (UT)",
+      imageUrl: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600&h=400",
     });
+    
+
   }
 
   const existingResults = await storage.getResults();

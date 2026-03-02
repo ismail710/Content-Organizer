@@ -1,9 +1,4 @@
-import { db } from "./db";
 import {
-  partners,
-  news,
-  results,
-  contacts,
   type InsertPartner,
   type Partner,
   type InsertNewsItem,
@@ -13,7 +8,6 @@ import {
   type InsertContactItem,
   type ContactItem,
 } from "@shared/schema";
-import { eq, desc } from "drizzle-orm";
 
 export interface IStorage {
   // Partners
@@ -33,49 +27,75 @@ export interface IStorage {
   createContact(contact: InsertContactItem): Promise<ContactItem>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class MemStorage implements IStorage {
+  private partners: Partner[] = [];
+  private news: NewsItem[] = [];
+  private results: ResultItem[] = [];
+  private contacts: ContactItem[] = [];
+  private nextId = { partners: 1, news: 1, results: 1, contacts: 1 };
+
   async getPartners(): Promise<Partner[]> {
-    return await db.select().from(partners);
+    return [...this.partners];
   }
 
   async createPartner(partner: InsertPartner): Promise<Partner> {
-    const [inserted] = await db.insert(partners).values(partner).returning();
-    return inserted;
-  }
-
-  async getNews(type?: "news" | "event"): Promise<NewsItem[]> {
-    if (type) {
-      return await db.select().from(news).where(eq(news.type, type)).orderBy(desc(news.publishedAt));
-    }
-    return await db.select().from(news).orderBy(desc(news.publishedAt));
-  }
-
-  async getNewsItem(id: number): Promise<NewsItem | undefined> {
-    const [item] = await db.select().from(news).where(eq(news.id, id));
+    const item: Partner = { id: this.nextId.partners++, ...partner };
+    this.partners.push(item);
     return item;
   }
 
+  async getNews(type?: "news" | "event"): Promise<NewsItem[]> {
+    const items = type ? this.news.filter((n) => n.type === type) : [...this.news];
+    return items.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+  }
+
+  async getNewsItem(id: number): Promise<NewsItem | undefined> {
+    return this.news.find((n) => n.id === id);
+  }
+
   async createNewsItem(item: InsertNewsItem): Promise<NewsItem> {
-    const [inserted] = await db.insert(news).values(item).returning();
-    return inserted;
+    const newsItem: NewsItem = {
+      id: this.nextId.news++,
+      title: item.title,
+      content: item.content,
+      type: item.type,
+      eventDate: item.eventDate ?? null,
+      location: item.location ?? null,
+      imageUrl: item.imageUrl ?? null,
+      publishedAt: new Date(),
+    };
+    this.news.push(newsItem);
+    return newsItem;
   }
 
   async getResults(type?: "deliverable" | "newsletter" | "promotional"): Promise<ResultItem[]> {
-    if (type) {
-      return await db.select().from(results).where(eq(results.type, type)).orderBy(desc(results.publishedAt));
-    }
-    return await db.select().from(results).orderBy(desc(results.publishedAt));
+    const items = type ? this.results.filter((r) => r.type === type) : [...this.results];
+    return items.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
   }
 
   async createResult(result: InsertResultItem): Promise<ResultItem> {
-    const [inserted] = await db.insert(results).values(result).returning();
-    return inserted;
+    const item: ResultItem = {
+      id: this.nextId.results++,
+      ...result,
+      publishedAt: new Date(),
+    };
+    this.results.push(item);
+    return item;
   }
 
   async createContact(contact: InsertContactItem): Promise<ContactItem> {
-    const [inserted] = await db.insert(contacts).values(contact).returning();
-    return inserted;
+    const item: ContactItem = {
+      id: this.nextId.contacts++,
+      name: contact.name,
+      email: contact.email,
+      message: contact.message ?? null,
+      type: contact.type,
+      gdprConsent: contact.gdprConsent,
+      createdAt: new Date(),
+    };
+    this.contacts.push(item);
+    return item;
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();

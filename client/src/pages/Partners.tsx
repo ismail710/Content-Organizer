@@ -11,7 +11,7 @@ export default function Partners() {
     <div className="min-h-screen bg-background">
       <PageHeader 
         title="Consortium" 
-        description="Our project brings together 5 leading institutions from across Europe, combining expertise in pedagogy, technology, and social inclusion."
+        description="Our project brings together 5 countries , combining expertise in pedagogy, technology, and social inclusion."
       />
 
       <div className="container mx-auto px-4 py-16">
@@ -29,34 +29,34 @@ export default function Partners() {
               </Card>
             ))
           ) : partners?.map((partner) => (
-            <Card key={partner.id} className="h-full border-border/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
-              <div className="h-48 bg-white p-8 flex items-center justify-center border-b border-slate-100">
-                <img 
-                  src={partner.logoUrl} 
-                  alt={`${partner.name} logo`} 
-                  className="max-h-full max-w-full object-contain"
-                />
-              </div>
-              <CardHeader className="p-6 pb-2">
-                <div className="text-xs font-bold text-secondary uppercase tracking-widest mb-2">
-                  {partner.role}
+            <a key={partner.id} href={partner.websiteUrl} target="_blank" rel="noopener noreferrer" className="block h-full">
+              <Card className="h-full border-border/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer group">
+                <div className="h-48 bg-white p-8 flex items-center justify-center border-b border-slate-100">
+                  <img 
+                    src={partner.logoUrl} 
+                    alt={`${partner.name} logo`} 
+                    className="h-20 w-44 object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
-                <h3 className="text-xl font-bold font-display text-primary">{partner.name}</h3>
-              </CardHeader>
-              <CardContent className="p-6 pt-2 flex-grow">
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {partner.description}
-                </p>
-              </CardContent>
-              <CardFooter className="p-6 pt-0 bg-slate-50 border-t border-slate-100">
-                <a href={partner.websiteUrl} target="_blank" rel="noopener noreferrer" className="w-full">
-                  <Button variant="ghost" className="w-full justify-start text-primary hover:text-primary hover:bg-white group">
+                <CardHeader className="p-6 pb-2">
+                  <div className="text-xs font-bold text-secondary uppercase tracking-widest mb-2">
+                    {partner.role}
+                  </div>
+                  <h3 className="text-xl font-bold font-display text-primary">{partner.name}</h3>
+                </CardHeader>
+                <CardContent className="p-6 pt-2 flex-grow">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {partner.description}
+                  </p>
+                </CardContent>
+                <CardFooter className="p-4 pt-0 bg-slate-50 border-t border-slate-100 justify-center">
+                  <span className="flex items-center text-primary text-sm font-medium group-hover:underline">
                     <Globe className="w-4 h-4 mr-2 text-secondary group-hover:scale-110 transition-transform" />
                     Visit Website
-                  </Button>
-                </a>
-              </CardFooter>
-            </Card>
+                  </span>
+                </CardFooter>
+              </Card>
+            </a>
           ))}
           
           {/* Join Us Card */}

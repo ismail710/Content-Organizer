@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { insertPartnerSchema, insertNewsSchema, insertResultSchema, insertContactSchema, partners, news, results, contacts } from './schema';
+import { insertPartnerSchema, insertNewsSchema, insertResultSchema, insertContactSchema, type Partner, type NewsItem, type ResultItem } from './schema';
 
 export const errorSchemas = {
   validation: z.object({
@@ -20,7 +20,7 @@ export const api = {
       method: 'GET' as const,
       path: '/api/partners' as const,
       responses: {
-        200: z.array(z.custom<typeof partners.$inferSelect>()),
+        200: z.array(z.custom<Partner>()),
       },
     },
   },
@@ -32,14 +32,14 @@ export const api = {
         type: z.enum(['news', 'event']).optional(),
       }).optional(),
       responses: {
-        200: z.array(z.custom<typeof news.$inferSelect>()),
+        200: z.array(z.custom<NewsItem>()),
       },
     },
     get: {
       method: 'GET' as const,
       path: '/api/news/:id' as const,
       responses: {
-        200: z.custom<typeof news.$inferSelect>(),
+        200: z.custom<NewsItem>(),
         404: errorSchemas.notFound,
       },
     }
@@ -52,7 +52,7 @@ export const api = {
         type: z.enum(['deliverable', 'newsletter', 'promotional']).optional(),
       }).optional(),
       responses: {
-        200: z.array(z.custom<typeof results.$inferSelect>()),
+        200: z.array(z.custom<ResultItem>()),
       },
     },
   },

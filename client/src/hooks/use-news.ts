@@ -1,30 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import { api, buildUrl } from "@shared/routes";
+import { newsItems } from "@/lib/staticData";
 
 export function useNewsList(type?: 'news' | 'event') {
   return useQuery({
-    queryKey: [api.news.list.path, type],
+    queryKey: ["news", type],
     queryFn: async () => {
-      const url = type 
-        ? `${api.news.list.path}?type=${type}` 
-        : api.news.list.path;
-      
-      const res = await fetch(url);
-      if (!res.ok) throw new Error("Failed to fetch news");
-      return api.news.list.responses[200].parse(await res.json());
+      const items = type ? newsItems.filter((n) => n.type === type) : newsItems;
+      return [...items].sort(
+        (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
     },
   });
 }
 
 export function useNewsItem(id: number) {
   return useQuery({
-    queryKey: [api.news.get.path, id],
-    queryFn: async () => {
-      const url = buildUrl(api.news.get.path, { id });
-      const res = await fetch(url);
-      if (res.status === 404) return null;
-      if (!res.ok) throw new Error("Failed to fetch news item");
-      return api.news.get.responses[200].parse(await res.json());
-    },
+    queryKey: ["news", id],
+    queryFn: async () => newsItems.find((n) => n.id === id) ?? null,
   });
 }
