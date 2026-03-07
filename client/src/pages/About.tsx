@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
-import { CheckCircle2, Clock, Target, ChevronDown } from "lucide-react";
+import { CheckCircle2, Clock, Target, ChevronDown, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 
@@ -177,6 +177,35 @@ export default function About() {
                     )}
                   </div>
                 ))}
+              </div>
+            </section>
+
+            {/* Progress Section */}
+            <section>
+              <h2 className="text-2xl font-bold font-display text-primary mb-6 flex items-center gap-2">
+                <TrendingUp className="w-6 h-6 text-secondary" /> Project Progress
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="bg-white border border-border rounded-xl p-6 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-primary">Project Duration</span>
+                    <span className="text-sm font-bold text-secondary">5%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-3">
+                    <div className="bg-primary h-3 rounded-full transition-all duration-700" style={{ width: "5%" }}></div>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2">Jan 2026 – Dec 2028 (36 months)</p>
+                </div>
+                <div className="bg-white border border-border rounded-xl p-6 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-primary">Achievements</span>
+                    <span className="text-sm font-bold text-secondary">5%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-3">
+                    <div className="bg-secondary h-3 rounded-full transition-all duration-700" style={{ width: "5%" }}></div>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2">Deliverables &amp; milestones completed</p>
+                </div>
               </div>
             </section>
           </div>

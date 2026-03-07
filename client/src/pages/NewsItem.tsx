@@ -2,13 +2,30 @@ import { useRoute, Link } from "wouter";
 import { useNewsItem } from "@/hooks/use-news";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, ArrowLeft, Share2 } from "lucide-react";
+import { Calendar, MapPin, ArrowLeft, Share2, Copy, Check } from "lucide-react";
 import { format } from "date-fns";
+import { useState as useStateShare } from "react";
 
 export default function NewsItem() {
   const [, params] = useRoute("/news/:id");
   const id = params ? parseInt(params.id) : 0;
   const { data: item, isLoading } = useNewsItem(id);
+  const [copied, setCopied] = useStateShare(false);
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = item?.title ?? "DTT4DS News";
+    if (navigator.share) {
+      try { await navigator.share({ title, url }); } catch (_) {}
+    } else {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  const encodedUrl = typeof window !== "undefined" ? encodeURIComponent(window.location.href) : "";
+  const encodedTitle = item ? encodeURIComponent(item.title) : "";
 
   if (isLoading) {
     return (
@@ -93,11 +110,42 @@ export default function NewsItem() {
           <div className="space-y-8">
             <div className="bg-slate-50 p-6 rounded-xl border border-border sticky top-24">
               <h3 className="font-bold text-lg font-display mb-4">Share this article</h3>
-              <div className="flex gap-2">
-                <Button variant="outline" size="icon" className="rounded-full bg-white hover:bg-primary hover:text-white transition-colors">
-                  <Share2 className="w-4 h-4" />
+              <div className="flex gap-2 flex-wrap">
+                <Button
+                  variant="outline" size="icon"
+                  className="rounded-full bg-white hover:bg-primary hover:text-white transition-colors"
+                  onClick={handleShare}
+                  title={copied ? "Copied!" : "Copy link or share"}
+                >
+                  {copied ? <Check className="w-4 h-4 text-green-600" /> : <Share2 className="w-4 h-4" />}
                 </Button>
-                {/* Add actual social share links here if needed */}
+                {/* Facebook */}
+                <a
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center h-9 w-9 rounded-full border bg-white hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors"
+                  title="Share on Facebook"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                {/* Twitter/X */}
+                <a
+                  href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center h-9 w-9 rounded-full border bg-white hover:bg-black hover:text-white hover:border-black transition-colors"
+                  title="Share on X (Twitter)"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                {/* LinkedIn */}
+                <a
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center h-9 w-9 rounded-full border bg-white hover:bg-blue-700 hover:text-white hover:border-blue-700 transition-colors"
+                  title="Share on LinkedIn"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
               </div>
               
               <div className="mt-8 pt-8 border-t border-slate-200">

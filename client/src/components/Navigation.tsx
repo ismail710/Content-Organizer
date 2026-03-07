@@ -19,7 +19,7 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm shadow-sm">
+    <nav className="sticky top-0 z-50 w-full border-b bg-background shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
@@ -52,17 +52,8 @@ export function Navigation() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
-            <Button size="sm" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold rounded-full px-5">
-              Subscribe
-            </Button>
-          </div>
-
-          {/* Mobile: Subscribe + hamburger */}
+          {/* Mobile: hamburger */}
           <div className="flex md:hidden items-center gap-2">
-            <Button size="sm" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold rounded-full px-4">
-              Subscribe
-            </Button>
             <button
               className="p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
               onClick={() => setIsOpen(!isOpen)}
@@ -76,7 +67,7 @@ export function Navigation() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden border-t bg-background/98 backdrop-blur-sm shadow-lg animate-in slide-in-from-top-5">
+          <div className="md:hidden border-t bg-background shadow-lg animate-in slide-in-from-top-5">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-1">
             {navItems.map((item) => (
               <Link

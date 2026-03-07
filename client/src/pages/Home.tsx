@@ -26,19 +26,42 @@ const heroSlides = [
 ];
 
 
-// This component tracks unique visitors using localStorage and sessionStorage
+// Tracks unique visitors via CounterAPI (global, works on static hosting)
+// with a localStorage fallback if the API is unreachable.
 function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
-    const stored = parseInt(localStorage.getItem("visitorCount") ?? "0", 10) || 0;
     const isNewSession = !sessionStorage.getItem("visited");
-    const newCount = isNewSession ? stored + 1 : stored;
-    if (isNewSession) {
-      sessionStorage.setItem("visited", "1");
-      localStorage.setItem("visitorCount", String(newCount));
+
+    if (!isNewSession) {
+      // Already counted this tab session – just show the cached value
+      const cached = parseInt(localStorage.getItem("visitorCount") ?? "0", 10) || 0;
+      setCount(cached);
+      return;
     }
-    setCount(newCount);
+
+    sessionStorage.setItem("visited", "1");
+
+    // Hit the free global counter (no sign-up required)
+    fetch("https://api.counterapi.dev/v1/dtt4ds-project/visitors/up")
+      .then((r) => r.json())
+      .then((data) => {
+        const value: number = data?.count ?? data?.value ?? 0;
+        if (value > 0) {
+          localStorage.setItem("visitorCount", String(value));
+          setCount(value);
+        } else {
+          throw new Error("invalid response");
+        }
+      })
+      .catch(() => {
+        // Offline / CORS fallback: local increment
+        const stored = parseInt(localStorage.getItem("visitorCount") ?? "0", 10) || 0;
+        const newCount = stored + 1;
+        localStorage.setItem("visitorCount", String(newCount));
+        setCount(newCount);
+      });
   }, []);
 
   return (

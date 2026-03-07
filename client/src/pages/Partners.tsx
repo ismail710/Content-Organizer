@@ -35,7 +35,7 @@ export default function Partners() {
                   <img 
                     src={partner.logoUrl} 
                     alt={`${partner.name} logo`} 
-                    className="h-20 w-44 object-contain transition-transform duration-300 group-hover:scale-105"
+                    className="h-28 w-60 object-contain transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
                 <CardHeader className="p-6 pb-2">
@@ -59,16 +59,7 @@ export default function Partners() {
             </a>
           ))}
           
-          {/* Join Us Card */}
-          <Card className="h-full border-2 border-dashed border-primary/20 bg-primary/5 flex flex-col items-center justify-center p-8 text-center min-h-[300px]">
-            <h3 className="text-xl font-bold font-display text-primary mb-2">Interested in collaborating?</h3>
-            <p className="text-muted-foreground text-sm mb-6 max-w-xs">
-              We are always open to networking with associated partners and other Erasmus+ projects.
-            </p>
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
-              Contact Coordinator
-            </Button>
-          </Card>
+        
         </div>
       </div>
     </div>

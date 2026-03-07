@@ -46,11 +46,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-1">
                 <Mail className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                <a href="mailto:zbacic@geof.hr" className="hover:text-secondary truncate">zbacic@geof.hr</a>
-              </li>
-              <li className="flex items-center gap-1">
-                <Mail className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                <a href="mailto:mlumse@geof.hr" className="hover:text-secondary truncate">mlumse@geof.hr</a>
+                <a href="mailto:dtt4sd@gmail.com" className="hover:text-secondary truncate">dtt4sd@gmail.com</a>
               </li>
             </ul>
           </div>
@@ -59,17 +55,11 @@ export function Footer() {
           <div>
             <h3 className="text-sm md:text-lg font-bold mb-2 md:mb-4 font-display text-secondary">Follow Us</h3>
             <div className="flex flex-wrap gap-2 md:gap-4">
-              <a href="#" className="p-1.5 md:p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
+              <a href="https://www.facebook.com/share/1EXyQ14HaT/?mibextid=wwXIfr" className="p-1.5 md:p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
                 <Facebook className="h-4 w-4 md:h-5 md:w-5" />
-              </a>
-              <a href="#" className="p-1.5 md:p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
-                <Twitter className="h-4 w-4 md:h-5 md:w-5" />
               </a>
               <a href="https://www.linkedin.com/company/ddt4sd/" target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
                 <Linkedin className="h-4 w-4 md:h-5 md:w-5" />
-              </a>
-              <a href="#" className="p-1.5 md:p-2 bg-primary-foreground/10 rounded-full hover:bg-secondary hover:text-secondary-foreground transition-all">
-                <Instagram className="h-4 w-4 md:h-5 md:w-5" />
               </a>
             </div>
           </div>

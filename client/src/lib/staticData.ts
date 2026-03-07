@@ -67,11 +67,19 @@ export const partners: Partner[] = [
   },
   {
     id: 9,
+    name: "UniZg – University of Zagreb",
+    role: "Partner",
+    description: "University of Zagreb - Faculty of Geodesy,  is the leading higher education and research institution in the field of geodesy and geoinformatics in Croatia. With a long academic tradition dating back to the 19th century, the Faculty has played a key role in the development of surveying, cartography, spatial data management and geospatial technologies in the region.",
+    websiteUrl: "https://www.unizg.hr/homepage/",
+    logoUrl: "/logo/UniZg.png",
+  },
+  {
+    id: 10,
     name: "IRESA – Institution de la Recherche et de l'Enseignement Supérieur Agricoles",
     role: "Partner",
     description: "INSTITUTION DE LA RECHERCHE ET DE L’ENSEIGNEMENT SUPERIEUR AGRICOLES (IRESA), PIC 999419519, established in RUE ALAIN SAVARY 30 MINISTERE DE L AGRICULTURE ET DES RESSOURCES HYDRAULIQUES, TUNIS 1002, Tunisia, represented for the purposes of signature of the Agreement by the Prof. Zohra Lili Chabaane, PhD, President,",
     websiteUrl: "https://www.iresa.tn/",
-    logoUrl: "/logo/UniZg.png",
+    logoUrl: "/logo/iresa.png",
   },
 ];
 
@@ -95,7 +103,7 @@ export const newsItems: NewsItem[] = [
     eventDate: new Date("2026-06-01T09:00:00Z"),
     location: "Enschede (UT)",
     imageUrl:
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600&h=400",
+      "",
     publishedAt: new Date("2026-02-24T00:00:00Z"),
   },
 ];

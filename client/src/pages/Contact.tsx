@@ -58,24 +58,13 @@ export default function Contact() {
                       <p className="text-sm opacity-75">University of Zagreb</p>
                     </div>
                   </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 bg-white/10 rounded-lg">
-                      <Phone className="w-5 h-5 text-secondary" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-sm">Phone</p>
-                      <p className="text-sm opacity-90"></p>
-                    </div>
-                  </div>
-
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-white/10 rounded-lg">
                       <Mail className="w-5 h-5 text-secondary" />
                     </div>
                     <div>
                       <p className="font-bold text-sm">Email</p>
-                      <a href="mailto:mlumse@geof.hr" className="text-sm opacity-90 hover:text-white block"></a>
+                      <a href="mailto:dtt4sd@gmail.com" className="text-sm opacity-90 hover:text-white block">dtt4sd@gmail.com</a>
                     </div>
                   </div>
                 </div>
@@ -157,16 +146,6 @@ export default function Contact() {
                             onCheckedChange={field.onChange}
                           />
                         </FormControl>
-                        <div className="space-y-1 leading-none">
-                          <FormLabel>
-                            GDPR Consent
-                          </FormLabel>
-                          <FormDescription>
-                            I agree to the processing of my personal data for the purpose of this inquiry. 
-                            <a href="/privacy" className="text-primary underline ml-1">Privacy Policy</a>
-                          </FormDescription>
-                          <FormMessage />
-                        </div>
                       </FormItem>
                     )}
                   />
