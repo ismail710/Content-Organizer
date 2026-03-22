@@ -3,13 +3,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertContactSchema, type InsertContactItem } from "@shared/schema";
 import { useCreateContact } from "@/hooks/use-contacts";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 
 export default function Contact() {
   const createContact = useCreateContact();
@@ -55,7 +55,7 @@ export default function Contact() {
                     <div>
                       <p className="font-bold text-sm">Project Coordinator</p>
                       <p className="text-sm opacity-90 font-semibold">Željko Bačić</p>
-                      <p className="text-sm opacity-75">University of Zagreb</p>
+                      <p className="text-sm opacity-75">UNIZG</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -64,7 +64,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-bold text-sm">Email</p>
-                      <a href="mailto:dtt4sd@gmail.com" className="text-sm opacity-90 hover:text-white block">dtt4sd@gmail.com</a>
+                      <a href="mailto:dtt4sd@geof.unizg.hr" className="text-sm opacity-90 hover:text-white block">dtt4sd@geof.unizg.hr</a>
                     </div>
                   </div>
                 </div>
@@ -135,28 +135,18 @@ export default function Contact() {
                     )}
                   />
 
-                  <FormField
-                    control={form.control}
-                    name="gdprConsent"
-                    render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 bg-slate-50">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                          />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
+
 
                   <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full md:w-auto bg-primary text-primary-foreground"
+                    className="group w-full md:w-auto min-w-48 bg-gradient-to-r from-primary to-primary/85 text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300 rounded-xl px-8"
                     disabled={createContact.isPending}
                   >
-                    {createContact.isPending ? "Sending..." : "Send Message"}
+                    <span className="inline-flex items-center gap-2 font-semibold tracking-wide">
+                      {createContact.isPending ? "Sending..." : "Send Message"}
+                      <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </span>
                   </Button>
                 </form>
               </Form>

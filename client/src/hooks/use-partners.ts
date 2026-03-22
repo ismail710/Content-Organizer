@@ -7,3 +7,10 @@ export function usePartners() {
     queryFn: async () => partners,
   });
 }
+
+export function usePartnerById(id: number) {
+  return useQuery({
+    queryKey: ["partners", id],
+    queryFn: async () => partners.find((partner) => partner.id === id) ?? null,
+  });
+}

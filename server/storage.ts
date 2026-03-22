@@ -77,6 +77,7 @@ export class MemStorage implements IStorage {
     const item: ResultItem = {
       id: this.nextId.results++,
       ...result,
+      isPublic: result.isPublic ?? true,
       publishedAt: new Date(),
     };
     this.results.push(item);

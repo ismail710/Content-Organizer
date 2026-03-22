@@ -47,6 +47,7 @@ export const insertResultSchema = z.object({
   description: z.string(),
   type: z.string(), // 'deliverable', 'newsletter', 'promotional'
   fileUrl: z.string(),
+  isPublic: z.boolean().optional(),
 });
 
 export type ResultItem = {
@@ -55,6 +56,7 @@ export type ResultItem = {
   description: string;
   type: string;
   fileUrl: string;
+  isPublic: boolean;
   publishedAt: Date;
 };
 export type InsertResultItem = z.infer<typeof insertResultSchema>;

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Facebook, Twitter, Linkedin, Instagram, Mail } from "lucide-react";
+import { Facebook, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -42,11 +42,11 @@ export function Footer() {
               <li>
                 <p className="font-semibold text-secondary/90">Željko Bačić</p>
                 <p className="opacity-75 hidden md:block">Project Coordinator</p>
-                <p className="opacity-75 hidden md:block">University of Zagreb</p>
+                <p className="opacity-75 hidden md:block">UNIZG</p>
               </li>
               <li className="flex items-center gap-1">
                 <Mail className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                <a href="mailto:dtt4sd@gmail.com" className="hover:text-secondary truncate">dtt4sd@gmail.com</a>
+                <a href="mailto:dtt4sd@geof.unizg.hr" className="hover:text-secondary truncate">dtt4sd@geof.unizg.hr</a>
               </li>
             </ul>
           </div>

@@ -1,9 +1,12 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { ExternalLink, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import projectLogo from "@assets/logo_1771678672101.png";
+import euCofundedLogo from "@assets/logo_1771678672101.png";
+
+const projectPlatformUrl = import.meta.env.VITE_PROJECT_PLATFORM_URL || "#";
+const hasPlatformUrl = projectPlatformUrl !== "#";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -23,15 +26,9 @@ export function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
-          {/* Logo + EU Flag */}
+          {/* Co-funded logo */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
-            <img src={projectLogo} alt="DTT4SD Logo" className="h-10 w-auto object-contain" />
-            <div className="h-6 w-px bg-border" />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
-              alt="European Union Flag"
-              className="h-7 w-auto object-contain rounded-sm border border-muted/60 shadow-sm"
-            />
+            <img src={euCofundedLogo} alt="Co-funded by the European Union" className="h-12 w-auto object-contain" />
           </Link>
 
           {/* Desktop Nav */}
@@ -50,6 +47,24 @@ export function Navigation() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href={projectPlatformUrl}
+              target={hasPlatformUrl ? "_blank" : undefined}
+              rel={hasPlatformUrl ? "noopener noreferrer" : undefined}
+              aria-disabled={!hasPlatformUrl}
+              onClick={(event) => {
+                if (!hasPlatformUrl) event.preventDefault();
+              }}
+              className={cn(
+                "ml-2 inline-flex items-center gap-1 text-sm font-semibold px-3 py-1.5 rounded-md border transition-colors",
+                hasPlatformUrl
+                  ? "text-primary border-primary/25 hover:bg-primary/5"
+                  : "text-muted-foreground border-border cursor-not-allowed"
+              )}
+            >
+              Moodle / Platform
+              {hasPlatformUrl && <ExternalLink className="h-3.5 w-3.5" />}
+            </a>
           </div>
 
           {/* Mobile: hamburger */}
@@ -84,6 +99,28 @@ export function Navigation() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href={projectPlatformUrl}
+              target={hasPlatformUrl ? "_blank" : undefined}
+              rel={hasPlatformUrl ? "noopener noreferrer" : undefined}
+              aria-disabled={!hasPlatformUrl}
+              onClick={(event) => {
+                if (!hasPlatformUrl) {
+                  event.preventDefault();
+                  setIsOpen(false);
+                } else {
+                  setIsOpen(false);
+                }
+              }}
+              className={cn(
+                "text-sm font-medium transition-colors px-3 py-2.5 rounded-lg border",
+                hasPlatformUrl
+                  ? "text-primary border-primary/30 hover:bg-primary/5"
+                  : "text-muted-foreground border-border cursor-not-allowed"
+              )}
+            >
+              Moodle / Platform
+            </a>
 
           </div>
         </div>

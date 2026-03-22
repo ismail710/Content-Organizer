@@ -8,14 +8,20 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 export function NewsCard({ item }: { item: NewsItem }) {
   // Fallback if image is missing
   const imageUrl = item.imageUrl || "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80";
+  const isEvent = item.type === "event";
+  const isPastEvent = isEvent && item.eventDate ? new Date(item.eventDate).getTime() < Date.now() : false;
+  const eventBadgeText = isPastEvent ? "Past Event" : "Upcoming Event";
 
   return (
     <Link href={`/news/${item.id}`} className="block h-full">
       <Card className="overflow-hidden flex flex-col h-full hover:shadow-lg transition-shadow duration-300 border-border/60 cursor-pointer group">
         <div className="relative h-48 w-full overflow-hidden">
           <div className="absolute top-4 left-4 z-10">
-            <Badge variant={item.type === 'event' ? "secondary" : "default"} className="font-bold uppercase tracking-wider text-xs">
-              {item.type}
+            <Badge
+              variant={isEvent ? (isPastEvent ? "outline" : "secondary") : "default"}
+              className="font-bold uppercase tracking-wider text-xs"
+            >
+              {isEvent ? eventBadgeText : item.type}
             </Badge>
           </div>
           <img 

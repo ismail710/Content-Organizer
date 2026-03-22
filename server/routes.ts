@@ -87,7 +87,7 @@ async function seedDatabase() {
       logoUrl: "/logo/inat.png",
     });
     await storage.createPartner({
-      name: "University of Zagreb",
+      name: "UNIZG",
       role: "Partner",
       description: "Major public research university in Croatia.",
       websiteUrl: "https://www.unizg.hr/homepage/",
