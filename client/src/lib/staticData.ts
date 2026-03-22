@@ -115,16 +115,7 @@ export const newsItems: NewsItem[] = [
       "",
     publishedAt: new Date("2026-02-24T00:00:00Z"),
   },
-  {
-    id: 3,
-    title: "Project Management Board Session",
-    content: "Hybrid meeting focused on quality assurance milestones and deliverable planning.",
-    type: "event",
-    eventDate: new Date("2025-10-14T09:00:00Z"),
-    location: "Zagreb, Croatia",
-    imageUrl: "",
-    publishedAt: new Date("2025-10-20T00:00:00Z"),
-  },
+  
 ];
 
 export const resultItems: ResultItem[] = [
