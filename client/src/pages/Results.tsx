@@ -17,8 +17,26 @@ export default function Results() {
   const [subscriberName, setSubscriberName] = useState("");
   const [subscriberEmail, setSubscriberEmail] = useState("");
   const [gdprConsent, setGdprConsent] = useState(false);
+  const [showSubscribeForm, setShowSubscribeForm] = useState(false);
 
-  const deliverables = results?.filter(r => r.type === 'deliverable') || [];
+  const deliverables = (results?.filter((r) => r.type === "deliverable") || []).sort((a, b) => {
+    const aMatch = a.title.match(/D\s*(\d+)\.(\d+)/i);
+    const bMatch = b.title.match(/D\s*(\d+)\.(\d+)/i);
+
+    if (aMatch && bMatch) {
+      const aMajor = Number(aMatch[1]);
+      const aMinor = Number(aMatch[2]);
+      const bMajor = Number(bMatch[1]);
+      const bMinor = Number(bMatch[2]);
+
+      if (aMajor !== bMajor) return aMajor - bMajor;
+      return aMinor - bMinor;
+    }
+
+    if (aMatch) return -1;
+    if (bMatch) return 1;
+    return a.title.localeCompare(b.title);
+  });
   const newsletters = results?.filter(r => r.type === 'newsletter') || [];
   const promotional = results?.filter(r => r.type === 'promotional') || [];
 
@@ -66,7 +84,7 @@ export default function Results() {
             <div className="grid md:grid-cols-2 gap-6">
               {isLoading ? <div>Loading...</div> : deliverables.length > 0 ? (
                 deliverables.map(item => (
-                  <ResultCard key={item.id} item={item} icon={FileText} showVisibility />
+                  <ResultCard key={item.id} item={item} icon={FileText} />
                 ))
               ) : (
                 <EmptyState message="No deliverables published yet." />
@@ -74,7 +92,7 @@ export default function Results() {
             </div>
           </TabsContent>
 
-          <TabsContent value="newsletters" className="animate-in fade-in-50 duration-500">
+          <TabsContent value="newsletters" className="animate-in fade-in-50 duration-500 flex flex-col min-h-[60vh]">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {isLoading ? <div>Loading...</div> : newsletters.length > 0 ? (
                 newsletters.map(item => (
@@ -85,57 +103,65 @@ export default function Results() {
               )}
             </div>
 
-            <div className="mt-10 max-w-2xl mx-auto">
-              <Card className="border-primary/15">
-                <CardHeader>
-                  <h3 className="text-xl font-bold font-display text-primary">Subscribe to the Newsletter</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Receive project updates directly in your inbox.
+            <div className="mt-auto pt-10 max-w-4xl mx-auto w-full rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 to-secondary/10 p-6 md:p-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-bold font-display text-primary">Stay in the Loop</h3>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Subscribe to receive new newsletter releases and project updates.
                   </p>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={submitNewsletterSubscription} className="space-y-4">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="subscriberName">Full Name</Label>
-                        <Input
-                          id="subscriberName"
-                          value={subscriberName}
-                          onChange={(event) => setSubscriberName(event.target.value)}
-                          placeholder="Jane Doe"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="subscriberEmail">Email Address</Label>
-                        <Input
-                          id="subscriberEmail"
-                          type="email"
-                          value={subscriberEmail}
-                          onChange={(event) => setSubscriberEmail(event.target.value)}
-                          placeholder="jane@example.com"
-                          required
-                        />
-                      </div>
-                    </div>
+                </div>
+                <Button
+                  type="button"
+                  onClick={() => setShowSubscribeForm((state) => !state)}
+                  className="w-full md:w-auto"
+                >
+                  {showSubscribeForm ? "Hide Form" : "Subscribe to Newsletter"}
+                </Button>
+              </div>
 
-                    <div className="flex items-start gap-3 rounded-md border p-3 bg-slate-50">
-                      <Checkbox
-                        id="newsletterGdpr"
-                        checked={gdprConsent}
-                        onCheckedChange={(checked) => setGdprConsent(Boolean(checked))}
+              {showSubscribeForm && (
+                <form onSubmit={submitNewsletterSubscription} className="space-y-4 mt-6 pt-6 border-t border-primary/15">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="subscriberName">Full Name</Label>
+                      <Input
+                        id="subscriberName"
+                        value={subscriberName}
+                        onChange={(event) => setSubscriberName(event.target.value)}
+                        placeholder="Jane Doe"
+                        required
                       />
-                      <Label htmlFor="newsletterGdpr" className="text-sm leading-relaxed font-normal cursor-pointer">
-                        I consent to the processing of my personal data in accordance with GDPR for newsletter communication.
-                      </Label>
                     </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="subscriberEmail">Email Address</Label>
+                      <Input
+                        id="subscriberEmail"
+                        type="email"
+                        value={subscriberEmail}
+                        onChange={(event) => setSubscriberEmail(event.target.value)}
+                        placeholder="jane@example.com"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                    <Button type="submit" disabled={createContact.isPending}>
-                      {createContact.isPending ? "Subscribing..." : "Subscribe"}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                  <div className="flex items-start gap-3 rounded-md border p-3 bg-white/70">
+                    <Checkbox
+                      id="newsletterGdpr"
+                      checked={gdprConsent}
+                      onCheckedChange={(checked) => setGdprConsent(Boolean(checked))}
+                    />
+                    <Label htmlFor="newsletterGdpr" className="text-sm leading-relaxed font-normal cursor-pointer">
+                      I consent to the processing of my personal data in accordance with GDPR for newsletter communication.
+                    </Label>
+                  </div>
+
+                  <Button type="submit" disabled={createContact.isPending}>
+                    {createContact.isPending ? "Subscribing..." : "Confirm Subscription"}
+                  </Button>
+                </form>
+              )}
             </div>
           </TabsContent>
           
@@ -159,10 +185,9 @@ export default function Results() {
 type ResultCardProps = {
   item: ResultItem;
   icon: ComponentType<{ className?: string }>;
-  showVisibility?: boolean;
 };
 
-function ResultCard({ item, icon: Icon, showVisibility = false }: ResultCardProps) {
+function ResultCard({ item, icon: Icon }: ResultCardProps) {
   const canDownload = item.isPublic && item.fileUrl;
 
   return (
@@ -174,11 +199,6 @@ function ResultCard({ item, icon: Icon, showVisibility = false }: ResultCardProp
         <div>
           <h3 className="font-bold text-lg font-display text-gray-900 leading-tight mb-1">{item.title}</h3>
           <p className="text-xs text-muted-foreground">Published: {new Date(item.publishedAt).toLocaleDateString()}</p>
-          {showVisibility && (
-            <p className="text-xs mt-1 text-muted-foreground">
-              Visibility: {item.isPublic ? "Public" : "Internal"}
-            </p>
-          )}
         </div>
       </CardHeader>
       <CardContent>
@@ -186,7 +206,7 @@ function ResultCard({ item, icon: Icon, showVisibility = false }: ResultCardProp
         {canDownload ? (
           <a href={item.fileUrl} target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="sm" className="w-full border-primary/20 hover:border-primary hover:bg-primary/5 text-primary">
-              <Download className="w-4 h-4 mr-2" /> Download
+              <Download className="w-4 h-4 mr-2" /> You may download it
             </Button>
           </a>
         ) : (

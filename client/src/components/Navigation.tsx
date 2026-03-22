@@ -3,7 +3,9 @@ import { cn } from "@/lib/utils";
 import { ExternalLink, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import euCofundedLogo from "@assets/logo_1771678672101.png";
+import projectLogo from "@assets/logo_1771678672101.png";
+
+const euCofundedLogo = "/logo/logo EU.png";
 
 const projectPlatformUrl = import.meta.env.VITE_PROJECT_PLATFORM_URL || "#";
 const hasPlatformUrl = projectPlatformUrl !== "#";
@@ -26,9 +28,11 @@ export function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
-          {/* Co-funded logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
-            <img src={euCofundedLogo} alt="Co-funded by the European Union" className="h-12 w-auto object-contain" />
+          {/* DTT4SD + EU co-funded logos */}
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <img src={projectLogo} alt="DTT4SD logo" className="h-9 w-auto object-contain" />
+            <div className="h-7 w-px bg-border" />
+            <img src={euCofundedLogo} alt="Co-funded by the European Union" className="h-8 sm:h-9 w-auto object-contain" />
           </Link>
 
           {/* Desktop Nav */}
