@@ -9,17 +9,17 @@ import { usePartners } from "@/hooks/use-partners";
 
 const heroSlides = [
   {
-    image: "/amphi.jpeg",
+    image: "/amphi.webp",
     caption: "Project kick-off in Tunisia",
     tag: "Kick-off",
   },
   {
-    image: "/groupe.jpeg",
+    image: "/groupe.webp",
     caption: "Project kick-off in Tunisia",
     tag: "Kick-off",
   },
   {
-    image: "/reunion.jpg",
+    image: "/reunion.webp",
     caption: "Project kick-off in Tunisia",
     tag: "Kick-off",
   },

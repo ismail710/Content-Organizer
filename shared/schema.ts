@@ -37,6 +37,7 @@ export type NewsItem = {
   eventDate: Date | null;
   location: string | null;
   imageUrl: string | null;
+  extraImages?: string[];
   publishedAt: Date;
 };
 export type InsertNewsItem = z.infer<typeof insertNewsSchema>;

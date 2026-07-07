@@ -203,6 +203,17 @@ function ResultCard({ item, icon: Icon }: ResultCardProps) {
       </CardHeader>
       <CardContent>
         <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{item.description}</p>
+        
+        {canDownload && item.fileUrl.toLowerCase().endsWith('.pdf') && (
+          <div className="mb-4 aspect-[4/3] w-full overflow-hidden rounded-md border border-border bg-muted/20">
+            <iframe 
+              src={`${item.fileUrl}#view=FitH&toolbar=0`} 
+              title={item.title}
+              className="w-full h-full" 
+            />
+          </div>
+        )}
+
         {canDownload ? (
           <a href={item.fileUrl} target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="sm" className="w-full border-primary/20 hover:border-primary hover:bg-primary/5 text-primary">

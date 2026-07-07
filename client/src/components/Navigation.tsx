@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import projectLogo from "@assets/logo_1771678672101.png";
 
-const euCofundedLogo = "/logo/logo EU.png";
+const euCofundedLogo = "/logo/logo EU.webp";
 
 const projectPlatformUrl = import.meta.env.VITE_PROJECT_PLATFORM_URL || "#";
 const hasPlatformUrl = projectPlatformUrl !== "#";

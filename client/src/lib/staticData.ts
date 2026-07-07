@@ -109,14 +109,24 @@ export const newsItems: NewsItem[] = [
     title: "CURRICULA DEVELOPMENT AND 1st TRAINING",
     content: "Enschede (UT)\n\nSummer 2026",
     type: "event",
-    eventDate: new Date("2026-06-01T09:00:00Z"),
+    eventDate: new Date("2026-06-19T09:00:00Z"),
     location: "Enschede (UT)",
     imageUrl:
       "",
     publishedAt: new Date("2026-02-24T00:00:00Z"),
   },
-  
-];
+    {
+      id: 3,
+      title: "UNIZG promoting Earth observation from Space and DTT4SD project",
+      content: "On May 14th in Zagreb has been organized by the Ministry of Education, Science and Youth and European Space Agency the seminar “Unlocking the value of Space” dedicated to presenting the possibilities of applying data collected from space (Earth Observation) in the work of the Croatian public administration. The event has gathered some 100 professionals in filed of Earth observation from business, academia and public sector.\n\nIn the panel session titled “Collaboration Between the Private, Public, and Academic Sectors in the Field of Earth Observation” one of the panelists was prof. dr. Željko Bačić who used the opportunity to present activities of DTT4SD project related to usage of Earth observation data from Space for creation of digital twins for hydrology, agriculture and climate change impacts.",
+      type: "event",
+      eventDate: new Date("2026-05-14T09:00:00Z"),
+      location: "Zagreb",
+      imageUrl: "/earth.jpg",
+      extraImages: ["/earth2.jpg"],
+      publishedAt: new Date("2026-05-25T00:00:00Z"),
+    },
+  ];
 
 export const resultItems: ResultItem[] = [
   {
@@ -151,8 +161,8 @@ export const resultItems: ResultItem[] = [
     title: "D2.1 : Global and national goals linked to existing partner curricula report",
     description: "",
     type: "deliverable",
-    fileUrl: "/assets/deliverables/D2.1.pdf",
-    isPublic: true,
+    fileUrl: "",
+    isPublic: false,
     publishedAt: new Date("2026-05-20T00:00:00Z"),
   },
   {
@@ -259,8 +269,8 @@ export const resultItems: ResultItem[] = [
     title: "D4.2 : Project webpage",
     description: "",
     type: "deliverable",
-    fileUrl: "/assets/deliverables/D4.2.pdf",
-    isPublic: true,
+    fileUrl: "",
+    isPublic: false,
     publishedAt: new Date("2026-10-20T00:00:00Z"),
   },
   {
@@ -295,8 +305,8 @@ export const resultItems: ResultItem[] = [
     title: "D4.6 : Promotion materials",
     description: "",
     type: "deliverable",
-    fileUrl: "/assets/deliverables/D4.6.pdf",
-    isPublic: true,
+    fileUrl: "",
+    isPublic: false,
     publishedAt: new Date("2026-12-10T00:00:00Z"),
   },
   {
@@ -367,9 +377,18 @@ export const resultItems: ResultItem[] = [
     title: "Newsletter - Issue 1",
     description: "Summary of kickoff meeting and first quarter achievements.",
     type: "newsletter",
-    fileUrl: "/assets/newsletter1.pdf",
-    isPublic: true,
+    fileUrl: "",
+    isPublic: false,
     publishedAt: new Date("2026-02-24T00:00:00Z"),
+  },
+  {
+    id: 29,
+    title: "Newsletter - Unlocking the value of Space",
+    description: "On May 14th in Zagreb has been organized by the Ministry of Education, Science and Youth and European Space Agency the seminar “Unlocking the value of Space” dedicated to presenting the possibilities of applying data collected from space (Earth Observation) in the work of the Croatian public administration. The event has gathered some 100 professionals in filed of Earth observation from business, academia and public sector. In the panel session titled “Collaboration Between the Private, Public, and Academic Sectors in the Field of Earth Observation” one of the panelists was prof. dr. Željko Bačić who used the opportunity to present activities of DTT4SD project related to usage of Earth observation data from Space for creation of digital twins for hydrology, agriculture and climate change impacts.",
+    type: "newsletter",
+    fileUrl: "/Title.pdf",
+    isPublic: true,
+    publishedAt: new Date(),
   },
 ];
 

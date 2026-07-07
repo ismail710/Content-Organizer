@@ -99,6 +99,21 @@ export default function NewsItem() {
                />
             </div>
 
+            {/* Extra Images */}
+            {item.extraImages && item.extraImages.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                {item.extraImages.map((img, idx) => (
+                  <div key={idx} className="rounded-2xl overflow-hidden shadow-lg border border-border/50">
+                    <img 
+                      src={img} 
+                      alt={`${item.title} gallery ${idx + 1}`}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
             {/* Content */}
             <article className="prose prose-lg prose-blue max-w-none">
               {item.content.split('\n').map((paragraph, idx) => (
